@@ -1,0 +1,45 @@
+{% extends 'projects/index.html' %}
+{% block main-content %}
+<style>
+  .img-container {
+    width:150px;
+    height:150px;
+    margin-left:auto;
+    margin-right:auto;
+
+  }
+</style>
+<div class="container-fluid mt-2">
+    <div class="row">
+        <div class=" col-md-12 pt-4 pl-1">
+             {% for message in messages %}
+            <div class="alert alert-{{message.tags}}"> {{ message }}  </div>
+            {% endfor %}
+            <div class="d-flex justify-content-end">
+                <a class="btn btn-success" href="{% url 'create-project' %}">Create project</a>
+            </div>
+            <h3 class="text-muted">all projects</h3>
+            <hr>
+        </div>
+    </div>
+    <div class="container">
+          <div class="row row-cols-1 row-cols-md-2 g-4">
+              {% for project in projects %}
+               <div class="col-md-6 mt-3">
+                   <div class="col-md-12 card text-white bg-dark mb-3 h-78">
+                      <div class="card-header text-center">{{project.title|upper}}</div>
+                      <div class="card-body justify-content-center">
+                           <a class="btn btn-success btn-sm col-md-3" href="{{ project.get_absolute_url }}">DETAILS</a>
+                           <a class="btn btn-info btn-sm col-md-4" href="{% url 'update-project'  id=project.id %}">EDIT</a>
+                           <a class="btn btn-danger btn-sm col-md-4" href="{% url 'delete_project' pk=project.id %}">DELETE</a>
+                      </div>
+                   </div>
+               </div>
+            {% endfor %}
+         </div>
+    </div>
+
+
+</div>
+
+{% endblock %}

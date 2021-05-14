@@ -1,0 +1,15 @@
+{% extends 'projects/index.html' %}
+{% load widget_tweaks %}
+{% block main-content %}
+
+   <div class="container">
+       <div class="row pt-3">
+          <div>
+            <p>{{project.title}}</p>
+            <p>{{project.description}}</p>
+            <p>{{project.budget}}</p>
+          </div>
+       </div>
+   </div>
+
+{% endblock %}

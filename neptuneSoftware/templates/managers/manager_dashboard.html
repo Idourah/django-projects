@@ -1,0 +1,96 @@
+{% extends 'managers/base.html' %}
+{% block title %} dashboard {% endblock %}
+{% block main %}
+<style>
+  .box-size{height:150px;width:95%}
+</style>
+<div class="container-fluid pt-4">
+    <div class="row d-flex justify-content-between pr-2 pl-4">
+        <div class="col">
+            <div class=" card text-white bg-success box-size border border-success">
+               <div class="card-header text-center font-weight-bold">Total projects</div>
+                  <div class="card-body">
+                      <h1 class="text-center">{{ CountProject }}</h1>
+                  </div>
+            </div>
+        </div>
+        <div class="col">
+             <div class=" card text-white bg-dark border border-dark box-size ">
+               <div class="card-header text-center font-weight-bold">Project Delivered</div>
+                  <div class="card-body justify-content-center">
+                        <h1 class="text-center">{{ DoneProject }}</h1>
+                  </div>
+             </div>
+        </div>
+        <div class="col">
+             <div class="card text-white bg-info  border border-info box-size ">
+               <div class="card-header text-center font-weight-bold">Project Pending</div>
+                  <div class="card-body justify-content-center">
+                        <h1 class="text-center">{{ PendingProject }}</h1>
+                  </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="row mt-5 pl-3 pr-3">
+      <div class="col-md-4">
+            <h4 class="text-muted">CUSTOMERS: {{ CountCustomer }}</h4>
+            <hr class="bg-light">
+            <div class="bg-white col pt-2">
+              <a href="#" class="btn btn-dark w-100">Create Customer</a><br>
+              <table class="table mt-0">
+                  <thead>
+                    <tr class="border-left-0">
+                        <th></th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                    </tr>
+                  </thead>
+                 {% for customer in customers %}
+                    <tr>
+                      <td><a href="#" class="btn btn-info btn-sm">view</a></td>
+                      <td>{{ customer.first_name }}</td>
+                      <td>{{ customer.last_name }}</td>
+                    </tr>
+                 {% endfor %}
+              </table>
+            </div>
+
+      </div>
+      <div class="col-md-8">
+        <h4 class="ml-2 text-muted">LAST PROJECTS</h4>
+          <hr class="bg-light">
+          <div class="bg-white pt-2 col">
+              <a class="btn btn-dark w-100" href="#">Create project</a>
+              <table class="table mt-0">
+                  <thead>
+                      <tr>
+                          <th>Title</th>
+                          <th>Status</th>
+                          <th>Budget</th>
+                          <th>Update</th>
+                          <th>Remove</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                  {% for project in projects %}
+                     <tr>
+                         <td>{{ project.title }}</td>
+                         {% if project.status %}
+                             <td>delivered</td>
+                         {% else %}
+                            <td>pending</td>
+                         {% endif %}
+                         <td>{{ project.budget }} $</td>
+                         <td><a href="#" class="btn btn-success btn-sm">Update</a></td>
+                         <td><a href="#" class="btn btn-danger  btn-sm">Remove</a></td>
+                     </tr>
+                  {% endfor %}
+                  </tbody>
+              </table>
+          </div>
+      </div>
+
+    </div>
+</div>
+{% endblock %}

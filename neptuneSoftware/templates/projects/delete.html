@@ -1,0 +1,31 @@
+{% extends 'projects/index.html' %}
+{% load widget_tweaks %}
+{% block main-content %}
+<style>
+    .modal-header{border-bottom:1px solid whitesmoke}
+    .modal-content{padding:15px 25px;border:none}
+    .dialog{border:1px solid whitesmoke; border-radius:5px; }
+</style>
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-md-6 mt-3">
+            <div class="dialog">
+                  <div class="modal-header ">
+                        <h5>Project Delete Dialog</h5>
+                   </div>
+                   <div class="modal-content ">
+                        <h5>Do you really want to delete {{project.name}} ?</h5>
+                   </div>
+                   <div class="modal-footer">
+                         <form method="POST">
+                             {% csrf_token %}
+                            <a href="{% url 'dashboard' %}" class="btn btn-secondary btn-md">Cancel</a>
+                            <input type="submit" value="Confirm" class="btn btn-success btn-md">
+                        </form>
+                   </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,46 @@
+<style>
+    .dropdown-icon{
+        font-size:14px; color:blue;
+    }
+    .dropdown-item-text{
+    margin-left:5px;color:blue;font-size:16px;
+    }
+
+</style>
+
+<nav class="navbar navbar-expand-lg bg-info">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="fas fa-bars text-white"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="col-md-6 navbar-nav mr-auto bg-info">
+              <li class="nav-item"><a class="nav-link text-white" href="{% url 'manager_home' %}">Dashboard</a></li>
+              <li class="nav-item"><a class="nav-link text-white" href="{% url 'manager_desktop' %}">Projects</a></li>
+              <li class="nav-item"><a class="nav-link text-white" href="{% url 'manager_customer' %}">Customers</a></li>
+              <li class="nav-item"><a class="nav-link text-white" href="{% url 'manager_customer' %}">Teams</a></li>
+              <li class="nav-item"><a class="nav-link text-white" href="{% url 'manager_message' %}">Messages</a></li>
+          </ul>
+          <ul class="navbar-nav mr-auto col-md-6 justify-content-end">
+            <li class="nav-item"><a class="nav-link text-white" href="#"><i class="fa fa-user mr-2" ></i> {{request.user.username}} {{ request.user.first_name }}</a></li>
+            <li class="nav-item dropdown float-left">
+                <a class="nav-link dropdown-toggle nav-link text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                </a>
+              <div style="width:100px;border:1px solid whitesmoke; border-radius:0" class="dropdown-menu dropdown-menu-right mt-2" id="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{% url 'customer-profile' request.user.id %}">
+                   <span class="input-group-addon" ><i class="fa fa-user dropdown-icon" style="color:brown"></i></span>
+                    <span class="dropdown-item-text" style="color:brown">profile</span>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{% url 'logout' %}">
+                   <span class="input-group-addon" ><i class="fas fa-sign-out-alt dropdown-icon" style="color:brown"></i></span>
+                    <span class="dropdown-item-text" style="color:brown">logout</span>
+                </a>
+              </div>
+            </li>
+
+          </ul>
+      </div>
+</nav>
+
+
