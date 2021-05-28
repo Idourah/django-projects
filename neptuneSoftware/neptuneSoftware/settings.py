@@ -23,10 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '60(wq+#d75d7=l!na9vfsfn7clyz$rrdk$9j%%48ab-kx82vks'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['neptune-software-company.herokuapp.com','127.0.0.1']
-
+ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = ['neptune-software-company.herokuapp.com','127.0.0.1']
 
 # Application definition
 
@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'projects',
     'accounts',
-    'managers'
+    'managers',
+    'storages',
+    'boto3'
 ]
 
 MIDDLEWARE = [
@@ -122,6 +124,18 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
+
+AWS_ACCESS_KEY_ID = 'AKIAXS5WQANKFEA37HPU'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'karatsubabucket'
+
+
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+#STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+
+
 
 AUTH_USER_MODEL = 'accounts.Account'
 
