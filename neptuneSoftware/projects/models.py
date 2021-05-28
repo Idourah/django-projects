@@ -12,6 +12,7 @@ class Project(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     status = models.BooleanField(default=False)
     created_date = models.DateField(default=timezone.now)
+    
 
     def get_absolute_url(self):
         return reverse('detail-project', kwargs={'id': self.id})
