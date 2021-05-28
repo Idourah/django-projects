@@ -23,10 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '60(wq+#d75d7=l!na9vfsfn7clyz$rrdk$9j%%48ab-kx82vks'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
-#ALLOWED_HOSTS = ['neptune-software-company.herokuapp.com','127.0.0.1']
+#ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['neptune-software-company.herokuapp.com','127.0.0.1']
 
 # Application definition
 
